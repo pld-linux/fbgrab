@@ -1,13 +1,14 @@
 Summary:	fbgrab - takes screenshots using the framebuffer device
 Summary(pl):	Narzêdzie zrzucaj±ce zawarto¶æ ekranu do pliku poprzez framebuffer
 Name:		fbgrab
-Version:	1.0b1
+Version:	1.0
 Release:	1
+Epoch:		1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	http://w1.827.telia.com/~u82705821/fbgrab/%{name}-%{version}.tar.gz
-# Source0-md5:	7772e040d851cb5b90cc4501865b4f92
-URL:		http://w1.827.telia.com/~u82705821/fbgrab/
+Source0:	http://hem.bredband.net/gmogmo/%{name}/%{name}-%{version}.tar.gz
+# Source0-md5:	7af4d8774684182ed690d5da82d6d234
+URL:		http://hem.bredband.net/gmogmo/fbgrab/
 BuildRequires:	libpng-devel
 Obsoletes:	fbshot
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
