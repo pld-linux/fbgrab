@@ -8,6 +8,7 @@ License:	GPL v2
 Group:		Applications/Graphics
 Source0:	http://hem.bredband.net/gmogmo/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	7af4d8774684182ed690d5da82d6d234
+Patch0:		%{name}-bigendian.patch
 URL:		http://hem.bredband.net/gmogmo/fbgrab/
 BuildRequires:	libpng-devel
 Obsoletes:	fbshot
@@ -28,6 +29,7 @@ framebufferowych.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__cc} %{rpmcflags} %{rpmldflags} -Wall -o fbgrab fbgrab.c -lpng
