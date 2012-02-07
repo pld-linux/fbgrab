@@ -2,7 +2,7 @@ Summary:	fbgrab - takes screenshots using the framebuffer device
 Summary(pl.UTF-8):	Narzędzie zrzucające zawartość ekranu do pliku poprzez framebuffer
 Name:		fbgrab
 Version:	1.0
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL v2
 Group:		Applications/Graphics
