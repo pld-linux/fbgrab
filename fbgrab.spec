@@ -2,13 +2,14 @@ Summary:	fbgrab - takes screenshots using the framebuffer device
 Summary(pl.UTF-8):	Narzędzie zrzucające zawartość ekranu do pliku poprzez framebuffer
 Name:		fbgrab
 Version:	1.0
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	http://hem.bredband.net/gmogmo/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://hem.bredband.net/gmogmo/fbgrab/%{name}-%{version}.tar.gz
 # Source0-md5:	7af4d8774684182ed690d5da82d6d234
 Patch0:		%{name}-bigendian.patch
+Patch1:		%{name}-libpng15.patch
 URL:		http://hem.bredband.net/gmogmo/fbgrab/
 BuildRequires:	libpng-devel
 Obsoletes:	fbshot
@@ -22,9 +23,9 @@ X Window System desktop, as well as framebuffer applications.
 
 %description -l pl.UTF-8
 fbgrab czyta urządzenie framebuffera (/dev/fb*) lub zrzut z niego i
-zapisuje zawartość do pliku graficznego PNG. Programu można używać
-do robienia zrzutów ekranu z każdej aplikacji, od tradycyjnych
-aplikacji tekstowych do ekranu X Window System, a także aplikacji
+zapisuje zawartość do pliku graficznego PNG. Programu można używać do
+robienia zrzutów ekranu z każdej aplikacji, od tradycyjnych aplikacji
+tekstowych do ekranu X Window System, a także aplikacji
 framebufferowych.
 
 %prep
