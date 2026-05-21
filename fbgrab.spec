@@ -1,17 +1,16 @@
 Summary:	fbgrab - takes screenshots using the framebuffer device
 Summary(pl.UTF-8):	Narzędzie zrzucające zawartość ekranu do pliku poprzez framebuffer
 Name:		fbgrab
-Version:	1.0
-Release:	6
+Version:	1.5
+Release:	1
 Epoch:		1
 License:	GPL v2
 Group:		Applications/Graphics
-Source0:	http://hem.bredband.net/gmogmo/fbgrab/%{name}-%{version}.tar.gz
-# Source0-md5:	7af4d8774684182ed690d5da82d6d234
-Patch0:		%{name}-bigendian.patch
-Patch1:		%{name}-libpng15.patch
-URL:		http://hem.bredband.net/gmogmo/fbgrab/
+Source0:	https://github.com/GunnarMonell/fbgrab/archive/refs/tags/%{version}.tar.gz?/%{name}-%{version}.tar.gz
+# Source0-md5:	a75cf6909acb099ef22ef90772fe30f7
+URL:		https://github.com/GunnarMonell/fbgrab
 BuildRequires:	libpng-devel
+BuildRequires:	zlib-devel
 Obsoletes:	fbshot
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,23 +29,23 @@ framebufferowych.
 
 %prep
 %setup -q
-%patch -P0 -p1
-%patch -P1 -p1
 
 %build
-%{__cc} %{rpmcflags} %{rpmldflags} -Wall -o fbgrab fbgrab.c -lpng
+%{__make} \
+	CC="%{__cc}" \
+	CFLAGS="%{rpmcflags} %{rpmcppflags}" \
+	LDFLAGS="%{rpmldflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man1}
-
-install fbgrab $RPM_BUILD_ROOT%{_bindir}
-install fbgrab.1.man $RPM_BUILD_ROOT%{_mandir}/man1/fbgrab.1
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%doc readme.md COPYING
+%attr(755,root,root) %{_bindir}/fbgrab
+%{_mandir}/man1/fbgrab.1*
